@@ -10,11 +10,17 @@ let mountain = document.getElementById("mountain");
 
 window.addEventListener("scroll", () => {
   let value = window.scrollY;
+  let specificDiv = document.querySelector(".footer");
+  let rect = specificDiv.getBoundingClientRect();
 
-  text.style.marginTop = value * 2.5 + "px";
-  treeL.style.marginLeft = value * -1.5 + "px";
-  treeR.style.marginRight = value * -1.5 + "px";
-  blg1.style.marginTop = value * 1.5 + "px";
-  blg2.style.marginBottom = value * 0.2 + "px";
-  mountain.style.marginTop = value * 2.5 + "px";
+  if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+    console.log("Reached specific div, stopping marginTop update");
+  } else {
+    text.style.marginTop = value * 2.5 + "px";
+    treeL.style.marginLeft = value * -1.5 + "px";
+    treeR.style.marginRight = value * -1.5 + "px";
+    blg1.style.marginTop = value * 1.5 + "px";
+    blg2.style.marginBottom = value * 0.2 + "px";
+    mountain.style.marginTop = value * 2.5 + "px";
+  }
 });
